@@ -12,7 +12,7 @@ export function Header() {
               <Heart className="w-6 h-6 text-white fill-current" />
             </div>
             <div>
-              <h1 className="text-xl font-bold text-gray-900">BloodConnect</h1>
+              <h1 className="text-xl font-bold text-gray-900">Need for Care</h1>
               <p className="text-xs text-gray-500">Donor Dashboard</p>
             </div>
           </div>

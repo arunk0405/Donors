@@ -6,7 +6,7 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "BloodConnect - Donor Dashboard",
+  title: "Need for Care - Donor Dashboard",
   description: "Blood donation platform for thalassemia patients",
     generator: 'v0.dev'
 }
