@@ -1,9 +1,20 @@
+"use client"
+
 import { Heart, User, History } from "lucide-react"
 import Link from "next/link"
+import { usePathname } from "next/navigation"
 
 export function Header() {
+  const pathname = usePathname()
+
+  const isActive = (path: string) => {
+    if (path === "/" && pathname === "/") return true
+    if (path !== "/" && pathname.startsWith(path)) return true
+    return false
+  }
+
   return (
-    <header className="bg-white shadow-sm border-b border-red-100">
+    <header className="bg-white shadow-sm border-b border-red-100 fixed top-0 left-0 right-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -19,23 +30,47 @@ export function Header() {
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link href="/" className="flex items-center space-x-2 text-red-600 font-medium">
+            <Link 
+              href="/" 
+              className={`flex items-center space-x-2 font-medium transition-colors relative pb-1 ${
+                isActive("/") 
+                  ? "text-red-600" 
+                  : "text-gray-600 hover:text-red-600"
+              }`}
+            >
               <Heart className="w-4 h-4" />
               <span>Dashboard</span>
+              {isActive("/") && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-600 rounded-full"></div>
+              )}
             </Link>
             <Link
               href="/profile"
-              className="flex items-center space-x-2 text-gray-600 hover:text-red-600 transition-colors"
+              className={`flex items-center space-x-2 font-medium transition-colors relative pb-1 ${
+                isActive("/profile") 
+                  ? "text-red-600" 
+                  : "text-gray-600 hover:text-red-600"
+              }`}
             >
               <User className="w-4 h-4" />
               <span>Profile</span>
+              {isActive("/profile") && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-600 rounded-full"></div>
+              )}
             </Link>
             <Link
               href="/history"
-              className="flex items-center space-x-2 text-gray-600 hover:text-red-600 transition-colors"
+              className={`flex items-center space-x-2 font-medium transition-colors relative pb-1 ${
+                isActive("/history") 
+                  ? "text-red-600" 
+                  : "text-gray-600 hover:text-red-600"
+              }`}
             >
               <History className="w-4 h-4" />
               <span>History</span>
+              {isActive("/history") && (
+                <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-red-600 rounded-full"></div>
+              )}
             </Link>
           </nav>
 
@@ -53,15 +88,36 @@ export function Header() {
 
         {/* Mobile Navigation */}
         <div className="md:hidden flex justify-around py-2 border-t border-red-100">
-          <Link href="/" className="flex flex-col items-center text-red-600">
+          <Link 
+            href="/" 
+            className={`flex flex-col items-center transition-colors relative px-4 py-1 rounded-lg ${
+              isActive("/") 
+                ? "text-red-600 bg-red-50" 
+                : "text-gray-600 hover:text-red-600"
+            }`}
+          >
             <Heart className="w-5 h-5" />
             <span className="text-xs mt-1">Dashboard</span>
           </Link>
-          <Link href="/profile" className="flex flex-col items-center text-gray-600">
+          <Link 
+            href="/profile" 
+            className={`flex flex-col items-center transition-colors relative px-4 py-1 rounded-lg ${
+              isActive("/profile") 
+                ? "text-red-600 bg-red-50" 
+                : "text-gray-600 hover:text-red-600"
+            }`}
+          >
             <User className="w-5 h-5" />
             <span className="text-xs mt-1">Profile</span>
           </Link>
-          <Link href="/history" className="flex flex-col items-center text-gray-600">
+          <Link 
+            href="/history" 
+            className={`flex flex-col items-center transition-colors relative px-4 py-1 rounded-lg ${
+              isActive("/history") 
+                ? "text-red-600 bg-red-50" 
+                : "text-gray-600 hover:text-red-600"
+            }`}
+          >
             <History className="w-5 h-5" />
             <span className="text-xs mt-1">History</span>
           </Link>

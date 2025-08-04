@@ -13,7 +13,7 @@ export default function DonationRequestPage() {
   return (
     <div>
       <Header />
-      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 pt-20">
         <div className="mb-8">
           <Link href="/" className="flex items-center text-red-600 hover:text-red-700 mb-4">
             <ArrowLeft className="w-4 h-4 mr-2" />
